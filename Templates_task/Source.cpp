@@ -4,6 +4,7 @@
 #include<vector>
 #include<stdexcept>
 
+
 using namespace std;
 
 template <typename T, typename V = vector<T> >
@@ -15,7 +16,7 @@ template <typename T, typename V = vector<T> >
 		void push(T const&);
 		void pop(); 
 		T top() const; 
-		T size() const; 
+		T size() const;
 
 		bool empty() const 
 		{ 
@@ -52,39 +53,44 @@ T Stack<T,V>::top () const
 template <typename T, typename V>
 T Stack<T,V>::size() const
 {
+	
+	
 	if(elements.empty())
 	{
 	throw out_of_range("Empty stack!");
 	}
-	elements.size();
+	else
+		
+		return elements.size();
 }
-
 int main()
 {
+	
 	try 
 	{
 		Stack<int> iStack;
 		Stack<double> dStack;
-		Stack<string> sStack;
+		Stack<float> fStack;
 
 		iStack.push(7);
-		cout << iStack.top() << endl;
 		iStack.push(9);
-		cout << iStack.top() << endl;
+		cout << "Int stack top element: " << iStack.top() << endl;
 
 		dStack.push(42);
 		dStack.push(12);
-		cout << dStack.top() << endl;
-		
-		cout << dStack.top() << endl;
-		
+		dStack.push(56.343);
+		cout << "Double stack top element: " << dStack.top() << endl;
 
-		sStack.push("el");
-		cout<< sStack.top()<<endl;
+		fStack.push(34.252);
+		fStack.push(5234.32423);
+		fStack.push(53.32423);
+		fStack.push(56.32423);
+		cout << "Float stack top element: " << fStack.top()<<endl;
 
 		cout<<"Number of elements of int Stack: "<<iStack.size()<<endl;
 		cout<<"Number of elements of double Stack: "<<dStack.size()<<endl;
-		/*cout<<"Number of elements of string Stack: "<<sStack.size()<<endl;*/
+		cout<<"Number of elements of float Stack: " <<fStack.size()<<endl;
+		
 	}
 	catch (exception const& ex) {
 	cerr << "Exception: " << ex.what() <<endl;
