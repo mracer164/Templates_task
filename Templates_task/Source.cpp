@@ -3,8 +3,14 @@
 #include<string>
 #include<vector>
 #include<stdexcept>
+#include<stack>
 
 using namespace std;
+
+template<typename T, std::size_t S>
+std::size_t SizeOf(T(&)[S]){
+	return S;
+}
 
 template <typename T, typename V = vector<T> >
 	class Stack 
@@ -48,6 +54,8 @@ T Stack<T,V>::top () const
 	}
 	return elements.back();
 }
+vector<double>::size_type vector_size;
+
 
 template <typename T, typename V>
 T Stack<T,V>::size() const
@@ -74,6 +82,7 @@ int main()
 
 		dStack.push(42);
 		dStack.push(12);
+		dStack.push(34);
 		cout << dStack.top() << endl;
 		
 		cout << dStack.top() << endl;
@@ -81,9 +90,9 @@ int main()
 
 		sStack.push("el");
 		cout<< sStack.top()<<endl;
-
-		cout<<"Number of elements of int Stack: "<<iStack.size()<<endl;
-		cout<<"Number of elements of double Stack: "<<dStack.size()<<endl;
+		vector_size = dStack.size();
+		cout<<"Number of elements of int Stack: "<<sizeof(iStack)<<endl;
+		cout<<"Number of elements of double Stack: "<<dStack.Stack::size()<<endl;
 		/*cout<<"Number of elements of string Stack: "<<sStack.size()<<endl;*/
 	}
 	catch (exception const& ex) {
