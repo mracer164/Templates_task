@@ -3,14 +3,9 @@
 #include<string>
 #include<vector>
 #include<stdexcept>
-#include<stack>
+
 
 using namespace std;
-
-template<typename T, std::size_t S>
-std::size_t SizeOf(T(&)[S]){
-	return S;
-}
 
 template <typename T, typename V = vector<T> >
 	class Stack 
@@ -21,7 +16,7 @@ template <typename T, typename V = vector<T> >
 		void push(T const&);
 		void pop(); 
 		T top() const; 
-		T size() const; 
+		T size() const;
 
 		bool empty() const 
 		{ 
@@ -54,46 +49,48 @@ T Stack<T,V>::top () const
 	}
 	return elements.back();
 }
-vector<double>::size_type vector_size;
-
 
 template <typename T, typename V>
 T Stack<T,V>::size() const
 {
+	
+	
 	if(elements.empty())
 	{
 	throw out_of_range("Empty stack!");
 	}
-	elements.size();
+	else
+		
+		return elements.size();
 }
-
 int main()
 {
+	
 	try 
 	{
 		Stack<int> iStack;
 		Stack<double> dStack;
-		Stack<string> sStack;
+		Stack<float> fStack;
 
 		iStack.push(7);
-		cout << iStack.top() << endl;
 		iStack.push(9);
-		cout << iStack.top() << endl;
+		cout << "Int stack top element: " << iStack.top() << endl;
 
 		dStack.push(42);
 		dStack.push(12);
-		dStack.push(34);
-		cout << dStack.top() << endl;
-		
-		cout << dStack.top() << endl;
-		
+		dStack.push(56.343);
+		cout << "Double stack top element: " << dStack.top() << endl;
 
-		sStack.push("el");
-		cout<< sStack.top()<<endl;
-		vector_size = dStack.size();
-		cout<<"Number of elements of int Stack: "<<sizeof(iStack)<<endl;
-		cout<<"Number of elements of double Stack: "<<dStack.Stack::size()<<endl;
-		/*cout<<"Number of elements of string Stack: "<<sStack.size()<<endl;*/
+		fStack.push(34.252);
+		fStack.push(5234.32423);
+		fStack.push(53.32423);
+		fStack.push(56.32423);
+		cout << "Float stack top element: " << fStack.top()<<endl;
+
+		cout<<"Number of elements of int Stack: "<<iStack.size()<<endl;
+		cout<<"Number of elements of double Stack: "<<dStack.size()<<endl;
+		cout<<"Number of elements of float Stack: " <<fStack.size()<<endl;
+		
 	}
 	catch (exception const& ex) {
 	cerr << "Exception: " << ex.what() <<endl;
